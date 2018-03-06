@@ -3,12 +3,15 @@ bamboo-server:
     ports:
         - 8085:8085
         - 54663:54663
+        - 3128:3128
     links:
         - postgres
     environment:
         BAMBOO_VERSION: ${BAMBOO_VERSION}
         BAMBOO_HOME: /home/bamboo
         BAMBOO_BAMBOO_SERVER_ID: bamboo-server
+        http_proxy: "http://192.168.65.1:3128"
+        https_proxy: "http://192.168.65.1:3128"
     volumes_from:
         - bamboo-data
 
