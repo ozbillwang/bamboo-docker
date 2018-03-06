@@ -3,7 +3,7 @@
 ## Installing requested packages
 if [ "${PACKAGES}" != "" ]
 then
-  echo "Packages to install: "${PACKAGES}"
+  echo "Packages to install: "${PACKAGES}
   apt-get -q update &&\
   DEBIAN_FRONTEND="noninteractive" apt-get -q upgrade -y -o Dpkg::Options::="--force-confnew" --no-install-recommends &&\
   DEBIAN_FRONTEND="noninteractive" apt-get -q install -y -o Dpkg::Options::="--force-confnew" --no-install-recommends ${PACKAGES} &&\
