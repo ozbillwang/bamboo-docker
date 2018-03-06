@@ -10,6 +10,8 @@ CMD ["/sbin/my_init"]
 
 # Environment
 ENV HOME /root/
+ENV http_proxy "http://192.168.65.1:3128"
+ENV https_proxy "http://192.168.65.1:3128"
 
 # Expose web and agent ports
 ENV LANG en_US.UTF-8

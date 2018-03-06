@@ -1,9 +1,9 @@
-#!/bin/bash
+
 
 ## Installing requested packages
 if [ "${PACKAGES}" != "" ]
 then
-  echo "Packages to install: "${PACKAGES}
+  echo "Packages to install: "${PACKAGES}"
   apt-get -q update &&\
   DEBIAN_FRONTEND="noninteractive" apt-get -q upgrade -y -o Dpkg::Options::="--force-confnew" --no-install-recommends &&\
   DEBIAN_FRONTEND="noninteractive" apt-get -q install -y -o Dpkg::Options::="--force-confnew" --no-install-recommends ${PACKAGES} &&\
@@ -59,6 +59,12 @@ then
         echo "${BAMBOO_CAPABILITIES}" > /root/bamboo-agent-home/bin/bamboo-capabilities.properties
       fi
       echo "Starting Bamboo Agent."
+
+      if [ ${proxy_server} != "" ];then
+         echo "wrapper.java.additional.3=-Dhttps.proxyHost=${proxy_server}" >> /root/bamboo-agent-home/conf/wrapper.conf
+         echo "wrapper.java.additional.4=-Dhttps.proxyPort=${proxy_port}" >> /root/bamboo-agent-home/conf/wrapper.conf
+      fi
+
       java -jar atlassian-bamboo-agent-installer-${AGENT_VERSION}.jar ${CONNECTION_STRING}
       if [ $? != 0 ]
       then

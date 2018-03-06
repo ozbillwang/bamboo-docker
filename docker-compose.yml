@@ -48,6 +48,7 @@ bamboo-agent:
         BAMBOO_VERSION: ${BAMBOO_VERSION}
         BAMBOO_SERVER: bamboo-server
         BAMBOO_SERVER_PORT: 8085
+        AGENT_VERSION: ${AGENT_VERSION}
         PACKAGES: "mc htop"
         proxy_server: ${PROXY_SERVER}
         proxy_port: ${PROXY_PORT}
